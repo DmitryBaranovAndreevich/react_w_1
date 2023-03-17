@@ -1,6 +1,6 @@
 import React from 'react';
 import MainPage from 'pages/mainPage';
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import './App.css';
 import AboutPage from 'pages/aboutPage';
 import NotFoundPage from 'pages/notFoundPage';
