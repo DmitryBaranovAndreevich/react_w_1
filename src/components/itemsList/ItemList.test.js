@@ -4,13 +4,13 @@ import { render } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { goods } from '../../service/goods';
 
-describe('Тест компонента списка товаров', () => {
-  it('Компонент списка товаров рендерится без проблем с пустым списком', () => {
+describe('Product List component Test', () => {
+  it('The component of the list of products is rendered without problems with an empty list', () => {
     const searchBar = renderer.create(<ItemsList goodsList={[]} />).toJSON();
     expect(searchBar).toMatchSnapshot();
   });
 
-  it('Компонент списка товаров рендерится без проблем со списком товаров', () => {
+  it('The component of the list of products is rendered without problems with the list of products', () => {
     const { container } = render(
       <BrowserRouter>
         <ItemsList goodsList={goods.products} />

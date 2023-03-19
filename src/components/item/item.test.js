@@ -4,14 +4,14 @@ import { fireEvent, render, screen, getByTestId } from '@testing-library/react';
 // import { BrowserRouter } from 'react-router-dom';
 import { goods } from '../../service/goods';
 
-describe('Тест компонента списка товаров', () => {
-  it('Карточка товара рендерится без проблем', () => {
+describe('Product List component Test', () => {
+  it('The product card is rendered without problems', () => {
     const item = renderer.create(<Items {...goods.products[0]} />).toJSON();
     expect(item).toMatchSnapshot();
   });
 
-  it("Клик на кноку 'Купить' вызывает обработчик клика", () => {
-      render(<Items {...goods.products[0]} />);
+  it("Clicking on the 'Buy' button triggers the click handler", () => {
+    render(<Items {...goods.products[0]} />);
 
     const button = screen.getByText('Купить');
     button.onclick = jest.fn();
@@ -20,4 +20,5 @@ describe('Тест компонента списка товаров', () => {
     expect(button.onclick).toHaveBeenCalled();
   });
 });
+
 

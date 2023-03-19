@@ -2,13 +2,13 @@ import Like from './like';
 import renderer from 'react-test-renderer';
 import { fireEvent, render } from '@testing-library/react';
 
-describe('Тест компонента иконки лайка', () => {
-  it('Компонент иконки лайка рендерится без проблем', () => {
+describe('Like icon component test', () => {
+  it('The like icon component is rendered without problems', () => {
     const like = renderer.create(<Like />).toJSON();
     expect(like).toMatchSnapshot();
   });
 
-  it('Клик на кноку иконку лайка вызывает обработчик клика', () => {
+  it('Clicking on the like icon button triggers the click handler', () => {
     const { container } = render(<Like />);
 
     const like = container.firstChild;

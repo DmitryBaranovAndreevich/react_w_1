@@ -1,8 +1,8 @@
 import SearchBar from './searchBar';
 import renderer from 'react-test-renderer';
 
-describe('Тест компонента поисковой строки', () => {
-  it('Компонент поисковой строки рендерится без проблем', () => {
+describe('Test of the search string component', () => {
+  it('The search bar component is rendered without problems', () => {
     const searchBar = renderer.create(<SearchBar />).toJSON();
     expect(searchBar).toMatchSnapshot();
   });

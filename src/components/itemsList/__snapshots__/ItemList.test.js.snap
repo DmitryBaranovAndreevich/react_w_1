@@ -1,5 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Product List component Test The component of the list of products is rendered without problems with an empty list 1`] = `
+<div
+  className="container"
+/>
+`;
+
 exports[`Тест компонента списка товаров Компонент списка товаров рендерится без проблем с пустым списком 1`] = `
 <div
   className="container"
