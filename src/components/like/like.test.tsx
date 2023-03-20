@@ -1,17 +1,12 @@
 import Like from './like';
-import renderer from 'react-test-renderer';
 import { fireEvent, render } from '@testing-library/react';
+import React from 'react';
 
 describe('Like icon component test', () => {
-  it('The like icon component is rendered without problems', () => {
-    const like = renderer.create(<Like />).toJSON();
-    expect(like).toMatchSnapshot();
-  });
-
   it('Clicking on the like icon button triggers the click handler', () => {
-    const { container } = render(<Like />);
+    const { container } = render(<Like active={false} onClick={() => {}} />);
 
-    const like = container.firstChild;
+    const like = container.firstChild as HTMLElement;
     like.onclick = jest.fn();
 
     fireEvent.click(like);

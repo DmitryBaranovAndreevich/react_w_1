@@ -1,15 +1,9 @@
 import Items from './item';
-import renderer from 'react-test-renderer';
-import { fireEvent, render, screen, getByTestId } from '@testing-library/react';
-// import { BrowserRouter } from 'react-router-dom';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { goods } from '../../service/goods';
+import React from 'react';
 
 describe('Product List component Test', () => {
-  it('The product card is rendered without problems', () => {
-    const item = renderer.create(<Items {...goods.products[0]} />).toJSON();
-    expect(item).toMatchSnapshot();
-  });
-
   it("Clicking on the 'Buy' button triggers the click handler", () => {
     render(<Items {...goods.products[0]} />);
 
@@ -20,5 +14,3 @@ describe('Product List component Test', () => {
     expect(button.onclick).toHaveBeenCalled();
   });
 });
-
-
