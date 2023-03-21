@@ -1,0 +1,11 @@
+.container {
+  width: 12px;
+  height: 12px;
+  align-self: flex-end;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.container:hover {
+  opacity: .6;
+}
