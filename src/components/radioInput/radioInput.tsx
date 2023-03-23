@@ -1,8 +1,7 @@
-import IRadioInput from '../../interfaces/IRadioInput';
 import React from 'react';
 import styles from './radioInput.module.css';
 
-class RadioInput extends React.Component<IRadioInput> {
+class RadioInput extends React.Component<{ spanLeft: string; spanRight: string }> {
   render() {
     const { spanLeft, spanRight } = this.props;
     return (
