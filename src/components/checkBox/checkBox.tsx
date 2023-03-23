@@ -1,3 +1,4 @@
+import ICheckBox from 'interfaces/ICheckBox';
 import React, { RefObject } from 'react';
 import styles from './checkBox.module.css';
 

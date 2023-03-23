@@ -1,6 +1,5 @@
 import ISelect from 'interfaces/ISelect';
-import React, { FormEvent, RefObject } from 'react';
-// import { text } from 'stream/consumers';
+import React, { RefObject } from 'react';
 import styles from './select.module.css';
 
 class Select extends React.Component<ISelect, { select: string }> {

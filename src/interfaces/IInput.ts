@@ -7,3 +7,5 @@ interface IInput {
   setValidation: () => void;
   addClass?: string;
 }
+
+export default IInput;

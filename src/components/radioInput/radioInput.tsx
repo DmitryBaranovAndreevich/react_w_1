@@ -1,3 +1,4 @@
+import IRadioInput from '../../interfaces/IRadioInput';
 import React from 'react';
 import styles from './radioInput.module.css';
 

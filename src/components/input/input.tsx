@@ -1,3 +1,4 @@
+import IInput from 'interfaces/IInput';
 import React, { RefObject } from 'react';
 import styles from './input.module.css';
 

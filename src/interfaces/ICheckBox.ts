@@ -5,3 +5,5 @@ interface ICheckBox {
   error: string;
   setValidation: () => void;
 }
+
+export default ICheckBox;

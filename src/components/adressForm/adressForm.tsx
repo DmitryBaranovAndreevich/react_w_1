@@ -8,7 +8,7 @@ import TDataRef from 'interfaces/TDataRef';
 import React, { FormEvent, RefObject } from 'react';
 import styles from './adressForm.module.css';
 
-class BuyPopup extends React.Component<Record<string, never>, BuyPopupState> {
+class AdressForm extends React.Component<Record<string, never>, BuyPopupState> {
   private nameRef = React.createRef();
   private surNameRef = React.createRef();
   private dateRef = React.createRef();
@@ -131,7 +131,9 @@ class BuyPopup extends React.Component<Record<string, never>, BuyPopupState> {
         <form className={styles.form} noValidate onSubmit={this.handleSubmitButtonclick}>
           <div className={styles.container}>
             <div className={styles.flexContainer}>
-              <span className={styles.fieldName}>Имя</span>
+              <span className={styles.fieldName} data-testid={'inputName'}>
+                Имя
+              </span>
               <Input
                 type="text"
                 error="Введите имя с большой буквы"
@@ -196,7 +198,7 @@ class BuyPopup extends React.Component<Record<string, never>, BuyPopupState> {
             innerRef={this.fileRef}
             setValidation={this.setStateConf.file}
           />
-          <button type="submit" className={styles.submitButton}>
+          <button type="submit" className={styles.submitButton} data-testid={'submitButton'}>
             Сохранить
           </button>
         </form>
@@ -210,4 +212,4 @@ class BuyPopup extends React.Component<Record<string, never>, BuyPopupState> {
   }
 }
 
-export default BuyPopup;
+export default AdressForm;

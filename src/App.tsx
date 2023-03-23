@@ -3,7 +3,7 @@ import { Routes, Route, NavLink } from 'react-router-dom';
 import styles from './App.module.css';
 import AboutPage from 'pages/aboutPage';
 import NotFoundPage from 'pages/notFoundPage';
-import BuyPopup from 'components/adressForm/adressForm';
+import AdressForm from 'components/adressForm/adressForm';
 import MainPage from 'pages/mainPage';
 
 function App() {
@@ -23,7 +23,7 @@ function App() {
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/about" element={<AboutPage />} />
-        <Route path="/user" element={<BuyPopup />} />
+        <Route path="/user" element={<AdressForm />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </div>
