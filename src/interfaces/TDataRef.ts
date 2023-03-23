@@ -5,6 +5,7 @@ type TDataRef = {
   select: string;
   checkBox: boolean;
   file: string;
+  id: string
 };
 
 export default TDataRef;

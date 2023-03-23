@@ -1,3 +1,4 @@
+import AdressItem from 'components/adressItem/adressItem';
 import CheckBox from 'components/checkBox/checkBox';
 import Input from 'components/input/input';
 import RadioInput from 'components/radioInput/radioInput';
@@ -26,6 +27,7 @@ class BuyPopup extends React.Component<Record<string, never>, BuyPopupState> {
         file: false,
       },
       items: [],
+      isSend: false,
     };
   }
 
@@ -91,6 +93,14 @@ class BuyPopup extends React.Component<Record<string, never>, BuyPopupState> {
       file: (this.fileRef as RefObject<HTMLInputElement>).current?.value as string,
     };
   }
+  clearForm() {
+    (this.nameRef.current as HTMLInputElement).value = '';
+    (this.surNameRef.current as HTMLInputElement).value = '';
+    (this.dateRef.current as HTMLInputElement).value = '';
+    (this.selectRef.current as HTMLSelectElement).value = 'default';
+    (this.checkBoxRef.current as HTMLInputElement).checked = false;
+    (this.fileRef.current as HTMLInputElement).value = '';
+  }
 
   async validateForm(stateRef: TDataRef) {
     await this.validateFirstLetterToUpperCase('nameUser')(stateRef.nameUser);
@@ -103,14 +113,21 @@ class BuyPopup extends React.Component<Record<string, never>, BuyPopupState> {
 
   handleSubmitButtonclick = async (e: FormEvent) => {
     e.preventDefault();
-    const stateRef = this.getRefData();
-    if (this.checkValid()) this.setState({ ...this.state, items: [...this.state.items, stateRef] });
-    console.log(this.checkValid(), this.state.items);
+    const stateRef = { ...this.getRefData(), id: String(Date.now()) };
+    await this.validateForm(stateRef);
+    if (this.checkValid()) {
+      this.setState({ ...this.state, items: [...this.state.items, stateRef], isSend: true });
+      setTimeout(() => {
+        this.setState({ ...this.state, isSend: false });
+        this.clearForm();
+      }, 3000);
+    }
   };
 
   render() {
     return (
       <div className={styles.layout}>
+        {this.state.isSend && <p className={styles.sendMessage}>☑ Форма успешно отправлена</p>}
         <form className={styles.form} noValidate onSubmit={this.handleSubmitButtonclick}>
           <div className={styles.container}>
             <div className={styles.flexContainer}>
@@ -183,6 +200,11 @@ class BuyPopup extends React.Component<Record<string, never>, BuyPopupState> {
             Сохранить
           </button>
         </form>
+        <div className={styles.itemsContainer}>
+          {this.state.items.map((item, index) => (
+            <AdressItem {...item} key={index} />
+          ))}
+        </div>
       </div>
     );
   }
