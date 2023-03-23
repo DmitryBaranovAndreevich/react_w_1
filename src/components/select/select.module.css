@@ -1,0 +1,35 @@
+.container {
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.label {
+  margin: 30px 0 5px;
+  padding: 0;
+  color: #b9b9b9;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  display: block;
+}
+
+.select {
+  display: block;
+  box-sizing: border-box;
+  border: 1px solid #eaeaea;
+  margin: 0 0 5px;
+  padding: 10px;
+  max-width: 400px;
+  width: 100%;
+  outline: none;
+  transition: 0.3s;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.errorMessage {
+  position: absolute;
+  top: 93px;
+  left: 5px;
+  color: lightpink
+}

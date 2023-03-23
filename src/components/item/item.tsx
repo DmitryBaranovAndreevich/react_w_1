@@ -3,6 +3,7 @@ import IGood from 'interfaces/IGood';
 import React from 'react';
 import styles from './item.module.css';
 import image from '../../icons/picture.jpg';
+import { Link } from 'react-router-dom';
 
 class Item extends React.Component<IGood> {
   state = { likeStatus: false };
@@ -21,7 +22,9 @@ class Item extends React.Component<IGood> {
           <p className={styles.stock}>от {stock} предложений</p>
           <p className={styles.rating}>{rating}</p>
         </div>
-        <button className={styles.button}>Купить</button>
+        <Link to="buy" className={styles.button}>
+          Купить
+        </Link>
       </div>
     );
   }

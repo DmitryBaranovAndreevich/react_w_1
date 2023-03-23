@@ -1,6 +1,7 @@
 import ItemsList from 'components/itemsList/itemsList';
 import SeachBar from 'components/searchBar/searchBar';
 import React from 'react';
+import { Outlet } from 'react-router-dom';
 import { goods } from 'service/goods';
 
 class MainPage extends React.Component {
@@ -8,6 +9,7 @@ class MainPage extends React.Component {
     return (
       <div>
         <SeachBar />
+        <Outlet />
         <ItemsList goodsList={goods.products} />
       </div>
     );
