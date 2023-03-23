@@ -1,10 +1,10 @@
-import AdressItem from 'components/adressItem/adressItem';
-import CheckBox from 'components/checkBox/checkBox';
-import Input from 'components/input/input';
-import RadioInput from 'components/radioInput/radioInput';
-import Select from 'components/select/select';
-import BuyPopupState from 'interfaces/BuyPopupState';
-import TDataRef from 'interfaces/TDataRef';
+import AdressItem from '../adressItem/adressItem';
+import CheckBox from '../checkBox/checkBox';
+import Input from '../input/input';
+import RadioInput from '../radioInput/radioInput';
+import Select from '../select/select';
+import BuyPopupState from '../../interfaces/BuyPopupState';
+import TDataRef from '../../interfaces/TDataRef';
 import React, { FormEvent, RefObject } from 'react';
 import styles from './adressForm.module.css';
 

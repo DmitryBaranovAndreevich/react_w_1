@@ -1,4 +1,4 @@
-import SeachIcon from 'components/seachIcon/searchIcon';
+import SeachIcon from '../seachIcon/searchIcon';
 import React, { FormEvent } from 'react';
 import styles from './searchBar.module.css';
 

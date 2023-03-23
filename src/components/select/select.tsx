@@ -1,4 +1,4 @@
-import ISelect from 'interfaces/ISelect';
+import ISelect from '../../interfaces/ISelect';
 import React, { RefObject } from 'react';
 import styles from './select.module.css';
 

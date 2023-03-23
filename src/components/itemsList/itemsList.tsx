@@ -1,5 +1,5 @@
-import Item from 'components/item/item';
-import IItemsList from 'interfaces/IItemsList';
+import Item from '../item/item';
+import IItemsList from '../../interfaces/IItemsList';
 import React from 'react';
 import styles from './itemsList.module.css';
 

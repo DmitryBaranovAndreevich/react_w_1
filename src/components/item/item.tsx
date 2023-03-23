@@ -1,5 +1,5 @@
-import Like from 'components/like/like';
-import IGood from 'interfaces/IGood';
+import Like from '../like/like';
+import IGood from '../../interfaces/IGood';
 import React from 'react';
 import styles from './item.module.css';
 import image from '../../icons/picture.jpg';

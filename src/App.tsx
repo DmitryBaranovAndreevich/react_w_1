@@ -1,10 +1,10 @@
 import React from 'react';
 import { Routes, Route, NavLink } from 'react-router-dom';
 import styles from './App.module.css';
-import AboutPage from 'pages/aboutPage';
-import NotFoundPage from 'pages/notFoundPage';
-import AdressForm from 'components/adressForm/adressForm';
-import MainPage from 'pages/mainPage';
+import AboutPage from './pages/aboutPage';
+import NotFoundPage from './pages/notFoundPage';
+import AdressForm from './components/adressForm/adressForm';
+import MainPage from './pages/mainPage';
 
 function App() {
   return (
