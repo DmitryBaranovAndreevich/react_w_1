@@ -1,24 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Routes, Route, NavLink } from 'react-router-dom';
+import styles from './App.module.css';
+import AboutPage from './pages/aboutPage';
+import NotFoundPage from './pages/notFoundPage';
+import AdressForm from './components/adressForm/adressForm';
+import MainPage from './pages/mainPage';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header className={styles.appHeader}>
+        <NavLink className={styles.link} to="/">
+          Home
+        </NavLink>
+        <NavLink className={styles.link} to="/about">
+          About
+        </NavLink>
+        <NavLink className={styles.link} to="/user">
+          To form
+        </NavLink>
       </header>
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/user" element={<AdressForm />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
     </div>
   );
 }

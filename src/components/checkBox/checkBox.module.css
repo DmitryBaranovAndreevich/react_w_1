@@ -1,0 +1,14 @@
+.container {
+  position: relative;
+  max-width:  450px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.errorMessage {
+  position: absolute;
+  top: 100px;
+  left: 5px;
+  color: lightpink
+}
