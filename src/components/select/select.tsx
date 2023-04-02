@@ -10,14 +10,7 @@ const Select: FC<ISelect> = ({ options, label, validation, error, name, setChang
       <label className={styles.label} htmlFor={htmlFor}>
         {label}
       </label>
-      <select
-        value={value}
-        name={name}
-        className={styles.select}
-        id={htmlFor}
-        defaultValue={'default'}
-        onChange={setChange}
-      >
+      <select value={value} name={name} className={styles.select} id={htmlFor} onChange={setChange}>
         <option value={'default'} disabled>
           -Ваш пол-
         </option>
