@@ -1,6 +1,6 @@
 import AdressForm from './adressForm';
 import { BrowserRouter } from 'react-router-dom';
-import { fireEvent, render, screen, getByTestId, act, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen, getByTestId, waitFor } from '@testing-library/react';
 import React from 'react';
 
 describe('Product List component Test', () => {

@@ -17,6 +17,7 @@ const SeachBar = () => {
   useEffect(() => {
     window.addEventListener('beforeunload', componentCleanup);
     return window.removeEventListener('beforeunload', componentCleanup);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

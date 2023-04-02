@@ -1,5 +1,5 @@
-import { Dispatch, FormEvent, SetStateAction } from "react";
-import TDataForm from "./TDataForm";
+import { Dispatch, SetStateAction } from 'react';
+import TDataForm from './TDataForm';
 
 interface ICheckBox {
   span: string;

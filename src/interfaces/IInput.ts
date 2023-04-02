@@ -1,5 +1,4 @@
-import { Dispatch, FormEvent, SetStateAction } from 'react';
-import IStateValidation from './IStateValidation';
+import { FormEvent } from 'react';
 
 interface IInput {
   type: string;

@@ -1,4 +1,4 @@
-import TDataForm from "./TDataForm";
+import TDataForm from './TDataForm';
 
 interface IStateValidation {
   validation: {
@@ -11,7 +11,7 @@ interface IStateValidation {
   };
   items: Array<TDataForm>;
   isSend: boolean;
-  formValid: boolean
+  formValid: boolean;
 }
 
 export default IStateValidation;

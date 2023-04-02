@@ -1,5 +1,5 @@
 import ICheckBox from '../../interfaces/ICheckBox';
-import React, { FC, FormEvent, RefObject } from 'react';
+import React, { FC, FormEvent } from 'react';
 import styles from './checkBox.module.css';
 
 const CheckBox: FC<ICheckBox> = ({ span, validation, error, setChange, name, value }) => {

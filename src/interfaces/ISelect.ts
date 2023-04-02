@@ -1,4 +1,4 @@
-import { FormEvent } from "react";
+import { FormEvent } from 'react';
 
 interface ISelect {
   label: string;
@@ -7,7 +7,7 @@ interface ISelect {
   error: string;
   name: string;
   setChange: (e: FormEvent) => void;
-  value: string
+  value: string;
 }
 
 export default ISelect;
