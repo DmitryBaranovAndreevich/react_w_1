@@ -1,11 +1,15 @@
+import { Dispatch, FormEvent, SetStateAction } from 'react';
+import IStateValidation from './IStateValidation';
+
 interface IInput {
   type: string;
   error: string;
-  innerRef: React.RefObject<unknown>;
   validation: boolean;
   stateKey?: string;
-  setValidation: () => void;
+  name: string;
+  setChange: (e: FormEvent) => void;
   addClass?: string;
+  value: string;
 }
 
 export default IInput;

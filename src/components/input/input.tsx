@@ -1,22 +1,14 @@
 import IInput from '../../interfaces/IInput';
-import React, { RefObject } from 'react';
+import React, { FC } from 'react';
 import styles from './input.module.css';
 
-class Input extends React.Component<IInput> {
-  render() {
-    const { type, error, validation, innerRef, setValidation } = this.props;
-    return (
-      <div className={styles.container}>
-        <input
-          type={type}
-          className={styles.input}
-          ref={innerRef as RefObject<HTMLInputElement>}
-          onChange={setValidation}
-        />
-        {validation && <span className={styles.errorMessage}>{error}</span>}
-      </div>
-    );
-  }
-}
+const Input: FC<IInput> = ({ type, error, validation, name, setChange, value }) => {
+  return (
+    <div className={styles.container}>
+      <input name={name} type={type} className={styles.input} onChange={setChange} value={value} />
+      {validation && <span className={styles.errorMessage}>{error}</span>}
+    </div>
+  );
+};
 
 export default Input;

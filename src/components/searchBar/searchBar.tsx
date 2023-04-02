@@ -1,42 +1,36 @@
 import SeachIcon from '../seachIcon/searchIcon';
-import React, { FormEvent } from 'react';
+import React, { FormEvent, useEffect, useState } from 'react';
 import styles from './searchBar.module.css';
 
-class SeachBar extends React.Component {
-  state = JSON.parse(localStorage.getItem('inputState') as string) || { mainInput: '' };
-
-  hadleInput = (e: FormEvent) => {
+const SeachBar = () => {
+  const init = JSON.parse(localStorage.getItem('inputState') as string) || { mainInput: '' };
+  const [state, setState] = useState(init);
+  const hadleInput = (e: FormEvent) => {
     const input = e.target as HTMLInputElement;
-    this.setState({ ...this.state, [input.name]: input.value });
+    setState({ ...state, [input.name]: input.value });
   };
 
-  componentCleanup = () => {
-    localStorage.setItem('inputState', JSON.stringify(this.state));
+  const componentCleanup = () => {
+    localStorage.setItem('inputState', JSON.stringify(state));
   };
 
-  componentDidMount() {
-    window.addEventListener('beforeunload', this.componentCleanup);
-  }
+  useEffect(() => {
+    window.addEventListener('beforeunload', componentCleanup);
+    return window.removeEventListener('beforeunload', componentCleanup);
+  }, []);
 
-  componentWillUnmount() {
-    this.componentCleanup();
-    window.removeEventListener('beforeunload', this.componentCleanup);
-  }
-
-  render() {
-    return (
-      <form className={styles.form}>
-        <SeachIcon />
-        <input
-          className={styles.input}
-          type="text"
-          name="mainInput"
-          value={this.state.mainInput}
-          onChange={this.hadleInput}
-        />
-      </form>
-    );
-  }
-}
+  return (
+    <form className={styles.form}>
+      <SeachIcon />
+      <input
+        className={styles.input}
+        type="text"
+        name="mainInput"
+        value={state.mainInput}
+        onChange={hadleInput}
+      />
+    </form>
+  );
+};
 
 export default SeachBar;

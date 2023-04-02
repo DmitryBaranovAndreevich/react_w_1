@@ -1,9 +1,13 @@
+import { Dispatch, FormEvent, SetStateAction } from "react";
+import TDataForm from "./TDataForm";
+
 interface ICheckBox {
   span: string;
-  innerRef: React.RefObject<unknown>;
   validation: boolean;
   error: string;
-  setValidation: () => void;
+  name: string;
+  setChange: Dispatch<SetStateAction<TDataForm>>;
+  value: boolean;
 }
 
 export default ICheckBox;

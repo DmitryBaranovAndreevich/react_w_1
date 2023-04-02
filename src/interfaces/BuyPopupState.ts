@@ -1,4 +1,4 @@
-import TDataRef from './TDataRef';
+import TDataRef from './TDataForm';
 import TValidRef from './TValidRef';
 
 interface BuyPopupState {
