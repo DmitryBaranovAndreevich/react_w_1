@@ -16,6 +16,7 @@ const SeachBar = () => {
 
   useEffect(() => {
     componentCleanup();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state]);
 
   return (
