@@ -1,0 +1,76 @@
+.layout {
+  position: relative;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  max-width: 900px;
+  width: 100%;
+  border: 1px solid #eaeaea;
+  border-radius: 10px;
+  padding: 20px 30px;
+  margin: 0 auto;
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.flexContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  width: 100%;
+}
+
+.fieldName {
+  color: #b9b9b9;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+}
+
+.submitButton {
+  box-sizing: border-box;
+  max-width: 200px;
+  width: 100%;
+  outline: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 1px solid #eaeaea;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  max-width: 200px;
+  transition: 0.3s;
+  cursor: pointer;
+  align-self: center;
+}
+
+.submitButton:hover {
+  opacity: 0.6;
+}
+
+.itemsContainer {
+  max-width: 100vw;
+  display: flex;
+  margin-top: 30px;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.sendMessage {
+  position: absolute;
+  top: 20%;
+  left: 40%;
+  font-size: 22px;
+  padding: 10px 30px;
+  border: 1px solid lightseagreen;
+  color: lightseagreen;
+  z-index: 2;
+}

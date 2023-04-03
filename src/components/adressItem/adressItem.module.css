@@ -1,0 +1,6 @@
+.container {
+  display: inline-block;
+  box-shadow: 0 0 4px hsl(225deg 9% 91% / 60%), 0 4px 16px hsl(225deg 9% 91% / 60%);
+  padding: 10px 20px;
+  background: #FFFFFF;
+}

@@ -1,0 +1,18 @@
+.form {
+  position: relative;
+  width: 55vw;
+  margin: 0 auto;
+  color: #000;
+  border: 0.1rem solid #fc0;
+  border-radius: .8rem;
+}
+
+.input {
+  box-sizing: border-box;
+  width: 100%;
+  font-size: 0.9rem;
+  border: none;
+  outline: none;
+  padding: 12px 20px 12px 30px;
+  border-radius: .8rem;
+}
