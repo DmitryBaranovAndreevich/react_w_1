@@ -35,7 +35,7 @@ const SeachBar = () => {
   }, [state]);
 
   return (
-    <form className={styles.form}>
+    <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
       <SeachIcon />
       <input
         className={styles.input}
