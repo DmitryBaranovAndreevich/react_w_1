@@ -5,6 +5,7 @@ import AboutPage from './pages/aboutPage';
 import NotFoundPage from './pages/notFoundPage';
 import AdressForm from './components/adressForm/adressForm';
 import MainPage from './pages/mainPage';
+import ItemPage from 'pages/itemPage';
 
 function App() {
   return (
@@ -21,7 +22,9 @@ function App() {
         </NavLink>
       </header>
       <Routes>
-        <Route path="/" element={<MainPage />} />
+        <Route path="/" element={<MainPage />}>
+          <Route path="person/:id" element={<ItemPage />} />
+        </Route>
         <Route path="/about" element={<AboutPage />} />
         <Route path="/user" element={<AdressForm />} />
         <Route path="*" element={<NotFoundPage />} />

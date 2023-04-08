@@ -1,0 +1,23 @@
+.container {
+  color: #ffffff;
+  background: lightgray;
+}
+
+.img {
+  width: 100%;
+  height: auto;
+}
+
+.title {
+  margin: 0;
+  font: 36px/38px sans-serif;
+  text-align: center;
+}
+
+.text {
+  margin: 0;
+}
+
+.text + .text {
+  margin-top: 10px;
+}

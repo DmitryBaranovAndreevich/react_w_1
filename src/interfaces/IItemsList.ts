@@ -1,7 +1,7 @@
-import IGood from './IGood';
+import IItem from './IItem';
 
 interface IItemsList {
-  goodsList: Array<IGood>;
+  docks: Array<IItem>;
 }
 
 export default IItemsList;

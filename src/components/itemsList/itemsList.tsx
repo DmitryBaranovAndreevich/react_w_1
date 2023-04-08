@@ -3,10 +3,10 @@ import IItemsList from '../../interfaces/IItemsList';
 import React, { FC } from 'react';
 import styles from './itemsList.module.css';
 
-const ItemsList: FC<IItemsList> = ({ goodsList }) => {
+const ItemsList: FC<IItemsList> = ({ docks }) => {
   return (
     <div className={styles.container}>
-      {goodsList.map((el) => (
+      {docks.map((el) => (
         <Item {...el} key={el.id} />
       ))}
     </div>

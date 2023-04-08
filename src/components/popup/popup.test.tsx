@@ -1,17 +1,19 @@
-import ItemsList from './itemsList';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import React from 'react';
+import Popup from './popup';
 
 describe('Product List component Test', () => {
   it('The component of the list of products is rendered without problems with the list of products', () => {
     const { container } = render(
       <BrowserRouter>
-        <ItemsList docks={[]} />
+        <Popup>
+          <p>test</p>
+        </Popup>
       </BrowserRouter>
     );
 
-    const items = container.firstChild?.childNodes;
-    expect(items?.length).toBe(0);
+    const items = screen.getByText('test');
+    expect(items).toBeInTheDocument();
   });
 });

@@ -1,10 +1,14 @@
 import SeachIcon from '../seachIcon/searchIcon';
-import React, { FormEvent, useEffect, useState } from 'react';
+import React, { FormEvent, useContext, useEffect, useState } from 'react';
 import styles from './searchBar.module.css';
+import { Context } from 'service/context';
+import { apiConfig } from 'service/constans';
+import IItem from 'interfaces/IItem';
 
 const SeachBar = () => {
   const init = JSON.parse(localStorage.getItem('inputState') as string) || { mainInput: '' };
   const [state, setState] = useState(init);
+  const [movies, setMovies] = useContext(Context);
   const hadleInput = (e: FormEvent) => {
     const input = e.target as HTMLInputElement;
     setState({ ...state, [input.name]: input.value });
@@ -13,6 +17,15 @@ const SeachBar = () => {
   const componentCleanup = () => {
     localStorage.setItem('inputState', JSON.stringify(state));
   };
+
+  useEffect(() => {
+    fetch(`${apiConfig.baseUrl}/titles/search/title/${state.mainInput}`, {
+      headers: apiConfig.headers,
+    })
+      .then((res) => res.json())
+      .then((res) => setMovies(res.results.filter((el: IItem) => el.primaryImage?.url)))
+      .catch((e) => console.log(e));
+  }, [state]);
 
   useEffect(() => {
     componentCleanup();

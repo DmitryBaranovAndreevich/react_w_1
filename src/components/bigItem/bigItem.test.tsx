@@ -1,8 +1,8 @@
-import Items from './item';
 import { BrowserRouter } from 'react-router-dom';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import React from 'react';
-
+import BigItem from './bigItem';
+import { Context } from 'service/context';
 const mocksDock = {
   id: '12',
   primaryImage: {
@@ -26,17 +26,13 @@ const mocksDock = {
 };
 
 describe('Product List component Test', () => {
-  it("Clicking on the 'Buy' button triggers the click handler", () => {
+  it('BigItem is render', () => {
     render(
       <BrowserRouter>
-        <Items {...mocksDock} />
+        <Context.Provider value={[[mocksDock], () => {}]}>
+          <BigItem />
+        </Context.Provider>
       </BrowserRouter>
     );
-
-    const button = screen.getByText('Узнать больше');
-    button.onclick = jest.fn();
-
-    fireEvent.click(button);
-    expect(button.onclick).toHaveBeenCalled();
   });
 });
