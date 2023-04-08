@@ -25,6 +25,14 @@ describe('Product List component Test', () => {
     expect(res.body.error).toBe(undefined);
   });
 
+  it('Testing a request to receive all movies', async () => {
+    const res = await request(apiConfig.baseUrl)
+      .get('/titles/search/title/test')
+      .set(apiConfig.headers);
+    expect(res.statusCode).toBe(200);
+    expect(res.body.error).toBe(undefined);
+  });
+
   it('The about page is rendered without problems', () => {
     render(
       <BrowserRouter>
