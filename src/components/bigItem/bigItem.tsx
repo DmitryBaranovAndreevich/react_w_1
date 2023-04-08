@@ -6,7 +6,7 @@ import IItem from 'interfaces/IItem';
 
 const BigItem = () => {
   const { id } = useParams();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [movies, setMovies] = useContext(Context);
   const movie = movies.find((el) => el.id === id) as IItem;
   return (
