@@ -26,6 +26,7 @@ const SeachBar = () => {
       .then((res) => res.json())
       .then((res) => setMovies(res.results.filter((el: IItem) => el.primaryImage?.url)))
       .catch((e) => console.log(e));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state]);
 
   useEffect(() => {

@@ -5,7 +5,7 @@ import Popup from './popup';
 
 describe('Product List component Test', () => {
   it('The component of the list of products is rendered without problems with the list of products', () => {
-    const { container } = render(
+    render(
       <BrowserRouter>
         <Popup>
           <p>test</p>
