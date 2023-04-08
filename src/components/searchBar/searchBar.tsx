@@ -8,6 +8,7 @@ import IItem from 'interfaces/IItem';
 const SeachBar = () => {
   const init = JSON.parse(localStorage.getItem('inputState') as string) || { mainInput: '' };
   const [state, setState] = useState(init);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const [movies, setMovies] = useContext(Context);
   const hadleInput = (e: FormEvent) => {
     const input = e.target as HTMLInputElement;

@@ -2,7 +2,6 @@ import Like from '../like/like';
 import IItem from '../../interfaces/IItem';
 import React, { FC, useState } from 'react';
 import styles from './item.module.css';
-import image from '../../icons/wallpaperflare.jpg';
 import { Link } from 'react-router-dom';
 
 const Item: FC<IItem> = ({ id, primaryImage, titleText }) => {

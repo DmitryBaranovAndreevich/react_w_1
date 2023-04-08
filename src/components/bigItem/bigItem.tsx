@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import styles from './bigItem.module.css';
 import { useParams } from 'react-router-dom';
 import { Context } from 'service/context';
@@ -6,6 +6,7 @@ import IItem from 'interfaces/IItem';
 
 const BigItem = () => {
   const { id } = useParams();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const [movies, setMovies] = useContext(Context);
   const movie = movies.find((el) => el.id === id) as IItem;
   return (
