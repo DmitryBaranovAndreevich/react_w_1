@@ -29,7 +29,7 @@ describe('Product List component Test', () => {
   it('BigItem is render', () => {
     render(
       <BrowserRouter>
-        <Context.Provider value={[[mocksDock], () => {}]}>
+        <Context.Provider value={[{ item: [mocksDock], isLoad: false }, () => {}]}>
           <BigItem />
         </Context.Provider>
       </BrowserRouter>

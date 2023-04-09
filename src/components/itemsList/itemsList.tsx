@@ -1,14 +1,21 @@
 import Item from '../item/item';
-import IItemsList from '../../interfaces/IItemsList';
-import React, { FC } from 'react';
+import React, { useContext } from 'react';
 import styles from './itemsList.module.css';
+import { Context } from 'service/context';
+import Spinner from 'components/spinner/spinner';
 
-const ItemsList: FC<IItemsList> = ({ docks }) => {
+const ItemsList = () => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [movies, setMovies] = useContext(Context);
   return (
     <div className={styles.container}>
-      {docks.map((el) => (
-        <Item {...el} key={el.id} />
-      ))}
+      {movies.isLoad ? (
+        <Spinner />
+      ) : !movies.item.length ? (
+        <h3>Nothing found</h3>
+      ) : (
+        movies.item.map((el) => <Item {...el} key={el.id} />)
+      )}
     </div>
   );
 };

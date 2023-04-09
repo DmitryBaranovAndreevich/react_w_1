@@ -1,4 +1,9 @@
 import IItem from 'interfaces/IItem';
 import React, { Dispatch, SetStateAction } from 'react';
-const init: [Array<IItem>, Dispatch<SetStateAction<IItem[]>>] = [[], () => {}];
+
+export interface IState {
+  item: Array<IItem>;
+  isLoad: boolean;
+}
+const init: [IState, Dispatch<SetStateAction<IState>>] = [{ item: [], isLoad: false }, () => {}];
 export const Context = React.createContext(init);

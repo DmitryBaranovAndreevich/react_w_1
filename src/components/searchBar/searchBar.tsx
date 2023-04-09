@@ -15,19 +15,39 @@ const SeachBar = () => {
     setState({ ...state, [input.name]: input.value });
   };
 
+  const request = (url: string) => {
+    setMovies({ ...movies, isLoad: true });
+    fetch(`${apiConfig.baseUrl}${url}`, {
+      headers: apiConfig.headers,
+    })
+      .then((res) => res.json())
+      .then((res) =>
+        setMovies({
+          ...movies,
+          item: res.results.filter((el: IItem) => el.primaryImage?.url),
+          isLoad: false,
+        })
+      )
+      .catch((e) => {
+        console.log(e);
+        setMovies({ ...movies, isLoad: false });
+      });
+  };
+
   const componentCleanup = () => {
     localStorage.setItem('inputState', JSON.stringify(state));
   };
 
+  const handleClick = (e: FormEvent) => {
+    e.preventDefault();
+    request(`/titles/search/title/${state.mainInput}`);
+  };
+
   useEffect(() => {
-    fetch(`${apiConfig.baseUrl}/titles/search/title/${state.mainInput}`, {
-      headers: apiConfig.headers,
-    })
-      .then((res) => res.json())
-      .then((res) => setMovies(res.results.filter((el: IItem) => el.primaryImage?.url)))
-      .catch((e) => console.log(e));
+    if (state.mainInput) request(`/titles/search/title/${state.mainInput}`);
+    else request('/titles');
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state]);
+  }, []);
 
   useEffect(() => {
     componentCleanup();
@@ -35,7 +55,7 @@ const SeachBar = () => {
   }, [state]);
 
   return (
-    <form className={styles.form} onSubmit={(e) => e.preventDefault()}>
+    <form className={styles.form} onSubmit={handleClick}>
       <SeachIcon />
       <input
         className={styles.input}

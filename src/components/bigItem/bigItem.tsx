@@ -8,7 +8,7 @@ const BigItem = () => {
   const { id } = useParams();
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [movies, setMovies] = useContext(Context);
-  const movie = movies.find((el) => el.id === id) as IItem;
+  const movie = movies.item.find((el) => el.id === id) as IItem;
   return (
     movie && (
       <div className={styles.container}>
