@@ -1,0 +1,26 @@
+.App {
+  text-align: center;
+}
+
+.appHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  color: white;
+  margin: 20px 0;
+}
+
+.link {
+  color: #27055e;
+  text-decoration: none;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
