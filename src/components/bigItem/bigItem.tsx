@@ -15,7 +15,8 @@ const BigItem = () => {
         <img className={styles.img} src={movie.primaryImage.url} alt="Movie" />
         <h3 className={styles.title}>{movie.titleText.text}</h3>
         <p className={styles.text}>
-          Release date: {movie.releaseDate.day}.{movie.releaseDate.month}.{movie.releaseDate.year}
+          Release date: {movie.releaseDate?.day}.{movie.releaseDate?.month}.
+          {movie.releaseDate?.year}
         </p>
         <p className={styles.death}>Type: {movie.titleType.text}</p>
       </div>
