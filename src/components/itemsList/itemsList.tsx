@@ -1,20 +1,49 @@
 import Item from '../item/item';
-import React, { useContext } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './itemsList.module.css';
-import { Context } from 'service/context';
 import Spinner from 'components/spinner/spinner';
+import { moviesApi } from 'service/movieService';
+import { useAppSelector } from 'hooks/redux';
+import IItem from 'interfaces/IItem';
 
 const ItemsList = () => {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [movies, setMovies] = useContext(Context);
-  return (
+  const { params } = useAppSelector((state) => state.searchBarReducer);
+
+  const { data: allMovies, isLoading: isAllMoviesLoading } = moviesApi.useFetchAllMoviesQuery('');
+
+  const { data: searchMovies, isLoading: isSearchMoviesLoading } =
+    moviesApi.useFetchSearchMoviesQuery(params ? params : 'all');
+
+  const [movies, setMovies] = useState<IItem[]>(
+    allMovies?.results.filter((el: IItem) => el.primaryImage?.url) as IItem[]
+  );
+
+  useEffect(() => {
+    setMovies(allMovies?.results.filter((el: IItem) => el.primaryImage?.url) as IItem[]);
+  }, [allMovies]);
+
+  useEffect(() => {
+    setMovies(searchMovies?.results.filter((el: IItem) => el.primaryImage?.url) as IItem[]);
+  }, [searchMovies]);
+
+  return params ? (
     <div className={styles.container}>
-      {movies.isLoad ? (
+      {isSearchMoviesLoading ? (
         <Spinner />
-      ) : !movies.item.length ? (
+      ) : movies && !movies.length ? (
         <h3>Nothing found</h3>
       ) : (
-        movies.item.map((el) => <Item {...el} key={el.id} />)
+        movies?.map((el) => <Item {...el} key={el.id} />)
+      )}
+    </div>
+  ) : (
+    <div className={styles.container}>
+      {isAllMoviesLoading ? (
+        <Spinner />
+      ) : (
+        allMovies?.results
+          .filter((el: IItem) => el.primaryImage?.url)
+          .map((el) => <Item {...el} key={el.id} />)
       )}
     </div>
   );

@@ -9,21 +9,26 @@ import useForm from 'hooks/useForm';
 import TDataForm from '../../interfaces/TDataForm';
 import IStateValidation from '../../interfaces/IStateValidation';
 import validationForm from '../../service/validateForm';
+import { useAppDispatch, useAppSelector } from 'hooks/redux';
+import { formSlice } from '../../store/reducers/formSlice';
 
 const AdressForm = () => {
-  const initStateValidation = {
-    validation: {
-      nameUser: false,
-      surName: false,
-      date: false,
-      select: false,
-      checkBox: false,
-      file: false,
-    },
-    items: [],
-    isSend: false,
-    formValid: false,
-  };
+  const dispatch = useAppDispatch();
+  const { setFormValid, setFormData } = formSlice.actions;
+  const { valid: validState, formData } = useAppSelector((state) => state.formReducer);
+  // const initStateValidation = {
+  //   validation: {
+  //     nameUser: false,
+  //     surName: false,
+  //     date: false,
+  //     select: false,
+  //     checkBox: false,
+  //     file: false,
+  //   },
+  //   items: [],
+  //   isSend: false,
+  //   formValid: false,
+  // };
 
   const initFormValues = {
     userName: '',
@@ -34,13 +39,14 @@ const AdressForm = () => {
     file: '',
   };
 
-  const {
-    state: formState,
-    handleChange,
-    setState: setFormState,
-  } = useForm<TDataForm>(initFormValues);
+  const { state: formState, handleChange, setState: setFormState } = useForm<TDataForm>(formData);
 
-  const [valid, setValid] = useState<IStateValidation>(initStateValidation);
+  const [valid, setValid] = useState<IStateValidation>(validState);
+
+  useEffect(() => {
+    dispatch(setFormValid(valid));
+    dispatch(setFormData(formState));
+  }, [valid, formState]);
 
   const changeValidState = (key: string, value: boolean) => {
     setValid((priv) => {

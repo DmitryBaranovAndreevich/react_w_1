@@ -1,14 +1,17 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styles from './bigItem.module.css';
 import { useParams } from 'react-router-dom';
-import { Context } from 'service/context';
 import IItem from 'interfaces/IItem';
+import { useAppSelector } from 'hooks/redux';
+import { moviesApi } from 'service/movieService';
 
 const BigItem = () => {
   const { id } = useParams();
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [movies, setMovies] = useContext(Context);
-  const movie = movies.item.find((el) => el.id === id) as IItem;
+  const { params } = useAppSelector((state) => state.searchBarReducer);
+  const { data: allMovies } = moviesApi.useFetchAllMoviesQuery('');
+  const { data: searchMovies } = moviesApi.useFetchSearchMoviesQuery(params ? params : 'all');
+  const movies = params ? searchMovies : allMovies;
+  const movie = movies?.results.find((el) => el.id === id) as IItem;
   return (
     movie && (
       <div className={styles.container}>

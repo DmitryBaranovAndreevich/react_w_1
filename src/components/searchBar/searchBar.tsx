@@ -1,57 +1,39 @@
 import SeachIcon from '../seachIcon/searchIcon';
-import React, { FormEvent, useContext, useEffect, useState } from 'react';
+import React, { FormEvent, useEffect, useState } from 'react';
 import styles from './searchBar.module.css';
-import { Context } from 'service/context';
-import { apiConfig } from 'service/constans';
-import IItem from 'interfaces/IItem';
+import { useAppDispatch, useAppSelector } from 'hooks/redux';
+import { moviesSlice } from 'store/reducers/moviesSlice';
+import { searchBarSlice } from 'store/reducers/searchBArSlice';
 
 const SeachBar = () => {
-  const init = JSON.parse(localStorage.getItem('inputState') as string) || { mainInput: '' };
-  const [state, setState] = useState(init);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [movies, setMovies] = useContext(Context);
+  const { params } = useAppSelector((state) => state.moviesReducer);
+  const { params: fetchParams } = useAppSelector((state) => state.searchBarReducer);
+  const [state, setState] = useState({ mainInput: params });
+  const dispatch = useAppDispatch();
+  const { getRequest } = moviesSlice.actions;
+  const { setParam } = searchBarSlice.actions;
+
   const hadleInput = (e: FormEvent) => {
     const input = e.target as HTMLInputElement;
     setState({ ...state, [input.name]: input.value });
   };
 
   const request = (url: string) => {
-    setMovies({ ...movies, isLoad: true });
-    fetch(`${apiConfig.baseUrl}${url}`, {
-      headers: apiConfig.headers,
-    })
-      .then((res) => res.json())
-      .then((res) =>
-        setMovies({
-          ...movies,
-          item: res.results.filter((el: IItem) => el.primaryImage?.url),
-          isLoad: false,
-        })
-      )
-      .catch((e) => {
-        console.log(e);
-        setMovies({ ...movies, isLoad: false });
-      });
-  };
-
-  const componentCleanup = () => {
-    localStorage.setItem('inputState', JSON.stringify(state));
+    dispatch(setParam(url));
   };
 
   const handleClick = (e: FormEvent) => {
     e.preventDefault();
-    request(`/titles/search/title/${state.mainInput}`);
+    request(state.mainInput);
   };
 
   useEffect(() => {
-    if (state.mainInput) request(`/titles/search/title/${state.mainInput}`);
-    else request('/titles');
+    request(fetchParams);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
-    componentCleanup();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    dispatch(getRequest(state.mainInput));
   }, [state]);
 
   return (
