@@ -4,12 +4,17 @@ import NotFoundPage from './notFoundPage';
 import { screen, render } from '@testing-library/react';
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import { setupStore } from 'store/store';
 
 describe('Product List component Test', () => {
   it('The main page is rendered without problems', () => {
+    const store = setupStore();
     render(
       <BrowserRouter>
-        <MainPage />
+        <Provider store={store}>
+          <MainPage />
+        </Provider>
       </BrowserRouter>
     );
 

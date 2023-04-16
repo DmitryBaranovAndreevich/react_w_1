@@ -16,19 +16,6 @@ const AdressForm = () => {
   const dispatch = useAppDispatch();
   const { setFormValid, setFormData } = formSlice.actions;
   const { valid: validState, formData } = useAppSelector((state) => state.formReducer);
-  // const initStateValidation = {
-  //   validation: {
-  //     nameUser: false,
-  //     surName: false,
-  //     date: false,
-  //     select: false,
-  //     checkBox: false,
-  //     file: false,
-  //   },
-  //   items: [],
-  //   isSend: false,
-  //   formValid: false,
-  // };
 
   const initFormValues = {
     userName: '',
@@ -46,6 +33,7 @@ const AdressForm = () => {
   useEffect(() => {
     dispatch(setFormValid(valid));
     dispatch(setFormData(formState));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [valid, formState]);
 
   const changeValidState = (key: string, value: boolean) => {

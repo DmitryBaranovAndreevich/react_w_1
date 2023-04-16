@@ -34,6 +34,7 @@ const SeachBar = () => {
 
   useEffect(() => {
     dispatch(getRequest(state.mainInput));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state]);
 
   return (

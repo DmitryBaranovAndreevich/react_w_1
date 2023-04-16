@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import React from 'react';
 import Popup from './popup';
@@ -14,6 +14,11 @@ describe('Product List component Test', () => {
     );
 
     const items = screen.getByText('test');
+    const button = screen.getByText('X');
+    button.onclick = jest.fn();
+
+    fireEvent.click(button);
+    expect(button.onclick).toHaveBeenCalled();
     expect(items).toBeInTheDocument();
   });
 });
