@@ -1,18 +1,20 @@
 import { BrowserRouter } from 'react-router-dom';
 import { render } from '@testing-library/react';
 import React from 'react';
-import App from 'App';
-import { Provider } from 'react-redux';
-import { setupStore } from 'store/store';
+import AdressItem from './adressItem';
 
 describe('Product List component Test', () => {
   it('BigItem is render', () => {
-    const store = setupStore();
     render(
       <BrowserRouter>
-        <Provider store={store}>
-          <App />
-        </Provider>
+        <AdressItem
+          userName={'test'}
+          surName={'test'}
+          date={'12.03.2023'}
+          select={'default'}
+          checkBox={false}
+          file={'test.tx'}
+        />
       </BrowserRouter>
     );
   });
